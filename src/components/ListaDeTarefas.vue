@@ -1,4 +1,6 @@
 <script setup>
+import { reactive } from 'vue';
+
     const props = defineProps(['tarefas']);
 </script>
 
@@ -9,6 +11,9 @@
             <label :class="{ done: tarefa.finalizada }" class="ms-3" :for="tarefa.titulo">
                 {{ tarefa.titulo }}
             </label>
+        </li>
+        <li class="list-group-item" v-if="props.tarefas.filter(t => !t.finalizada).length === 0">
+            Todas as tarefas foram finalizadas.
         </li>
     </ul>
 </template>
